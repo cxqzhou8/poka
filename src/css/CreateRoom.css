@@ -1,0 +1,26 @@
+.form-wrapper {
+    margin: 0 auto;
+}
+.title-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-crop-circle {
+    position: relative;
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 50%;
+    background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+}
+.img-crop-circle img {
+    max-width: 100px;
+}
+.trans-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

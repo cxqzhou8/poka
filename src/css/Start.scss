@@ -1,0 +1,19 @@
+.start-container {
+    padding: 1.5rem;
+
+    @media (min-width: 768px) {
+        padding: 3rem;
+    }
+}
+.name-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    
+    @media (min-width: 768px) {
+        padding: 3rem !important;
+    }
+
+    @media (min-width: 1440px) {
+        width: 50%;
+    }
+}

@@ -1,0 +1,109 @@
+.room-container {
+    position: relative;
+    height: 100vh;
+
+    @media (max-width: 767px) {
+        overflow-x: hidden;
+    }
+}
+
+.room-list-wrapper {
+    padding: 0;
+}
+
+.room-info-container {
+    position: relative;
+}
+
+.room-info-wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @media (min-width: 768px) {
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.qr-code {
+    display: block;
+    margin: 0 auto;
+}
+
+.yt-room-container {
+    padding: 1rem 0;
+
+    @media (min-width: 768px) {
+        padding: 1rem;
+    }
+}
+
+.timer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3.5rem;
+}
+
+.spinner-wrapper,
+.center-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.poll-wrapper {
+    display: block;
+}
+
+.poll-form {
+    width: 100%;
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+        padding: 3rem;
+    }
+
+    @media (min-width: 1440px) {
+        padding: 3rem;
+        width: 50%;
+    }
+}
+
+.leave-room-btn {
+    @media (min-width: 768px) {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+}
+
+.toggle-rp-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.reveal-rp-enter {
+    // right: -225px;
+    opacity: 0;
+}
+
+.reveal-rp-enter-active {
+    // right: 0;
+    opacity: 1;
+    transition: opacity 300ms ease-in;
+}
+
+.reveal-rp-exit {
+    // right: 0;
+    opacity: 1;
+}
+
+.reveal-rp-exit-active {
+    // right: -225px;
+    opacity: 0;
+    transition: opacity 300ms ease-in;
+}

@@ -1,0 +1,8 @@
+.poll-list-container {
+    display: inline-block;
+}
+
+.poll-list-container ul {
+    max-width: 50%;
+    list-style: none;
+}
