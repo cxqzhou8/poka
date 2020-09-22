@@ -1,5 +1,6 @@
-import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:3000');
+import io from 'socket.io-client';
+import content from '../static.json';
+const socket = io(); //openSocket(content.api);
 
 function joinRoom(roomId, user, success, err, update) {
     console.log('called join');

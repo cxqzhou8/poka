@@ -8,6 +8,7 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { Redirect } from 'react-router-dom';
+import content from '../static.json';
 
 class Start extends React.Component {
     static contextType = UserContext;
@@ -45,7 +46,7 @@ class Start extends React.Component {
             const user = { nickname: this.state.nickname };
             this.context.updateProp('nickname', user.nickname);
 
-            axios.post(`http://localhost:3000/create-nickname`, { user })
+            axios.post(`${content.api}/create-nickname`, { user })
                 .then(res => {
                     console.log(res)
                     console.log(res.data)
