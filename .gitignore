@@ -2,7 +2,7 @@ node_modules/
 .env
 poll-kar-e95a6fd0aae8.json
 poll-kar-79fdc35215a6.json
-images/
+# images/
 poka-icon.*
 
 # dependencies
