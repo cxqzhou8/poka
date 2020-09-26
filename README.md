@@ -1,5 +1,5 @@
 # poka
-This is the source code for **poka**, a web app for polling karaoke songs you want to sing with a group of friends. Check out the demo here: <a href="https://serene-temple-29933.herokuapp.com/" target="_blank">serene-temple-29933.herokuapp.com</a>.
+This is the source code for **poka**, a web app for polling karaoke songs you want to sing with a group of friends. Check out the demo here: <a href="https://poka-app.herokuapp.com/" target="_blank">poka-app.herokuapp.com</a>.
 
 ### poka uses the following web tools/technologies:
 - Node.js
