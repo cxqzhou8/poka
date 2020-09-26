@@ -33,7 +33,7 @@ class Room extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = { started: false, validated: false, foundWinner: false, currMaxItem: {}, videoId: '', showContinueBtn: true, poll: {}, totalVotes: 0, pollItem: null, formSubmitted: false, timer: 30, id: this.props.match.params.id, joined: false, roomPars: [], showRoomPars: false, qrCodeUrl: '', exiting: false, confirmExit: false };
+        this.state = { started: false, validated: false, foundWinner: false, currMaxItem: {}, videoId: '', showContinueBtn: true, poll: {}, totalVotes: 0, pollItem: null, formSubmitted: false, timer: 30, id: this.props.match.params.id, joined: false, roomPars: [], showRoomPars: false, qrCodeUrl: '', exiting: false, confirmExit: false, profResolved: false };
 
         this.toggleRoomPars = this.toggleRoomPars.bind(this);
 
@@ -69,11 +69,17 @@ class Room extends React.Component {
 
         const user = { nickname: this.context.user.nickname, profile: this.context.user.profile };
 
+        console.log('user object:');
+        console.log(user);
+
         if (this.context.user.roomId) {
-            joinRoom(this.context.user.roomId, user, this.joinRoomSuccess, this.joinRoomError, this.joinRoomUpdate);
-        } else if (this.props.isJoining) {
-            joinRoom(this.state.id, user, this.joinRoomSuccess, this.joinRoomError, this.joinRoomUpdate);
+            this.setState({profResolved: true});
+            joinRoom(this.context.user.roomId, this.context.user, this.joinRoomSuccess, this.joinRoomError, this.joinRoomUpdate);
         }
+            //  else if (this.props.isJoining) {
+            //     this.setState({profResolved: true});
+            //     joinRoom(this.state.id, this.context.user, this.joinRoomSuccess, this.joinRoomError, this.joinRoomUpdate);
+            // }
     }
 
     toggleRoomPars() {
@@ -240,6 +246,8 @@ class Room extends React.Component {
                 {
                     ({ user, updateProp }) => {
                         if ((this.state.exiting && this.state.confirmExit) || _.isEmpty(user)) {
+                            if (!(this.state.exiting && this.state.confirmExit) && this.props.isJoining)
+                                return <Redirect to={`/${this.state.id}`} />
                             return <Redirect to="/" />
                         }
 
@@ -373,10 +381,17 @@ class Room extends React.Component {
                                     </div>
                                 );
                             } else {
+                                if (user.profile && !this.state.profResolved) {
+                                    console.log('hi profile has been resolved')
+                                    joinRoom(this.state.id, user, this.joinRoomSuccess, this.joinRoomError, this.joinRoomUpdate);
+                                    this.setState({ profResolved: true });
+                                }
+
                                 return (
                                     <div className="room-container py-5 text-center">
                                         <div>
                                             <h1>Joining room (id: {this.state.id})</h1>
+                                            <BeatLoader css={override} color={"#36D7B7"} loading={true} />
                                         </div>
                                     </div>
                                 );

@@ -336,17 +336,17 @@ io.on('connection', (socket) => {
             if (isOwner) {
                 socket.leave(roomStr);
                 socket.to(roomStr).emit('room-update', { status: 'force-leave', user: null });
+
+                if (timers.has(roomId)) {
+                    clearInterval(timers.get(roomId));
+                    timers.delete(roomId);
+                }    
             } else {
                 socket.leave(roomStr);
             }
 
             console.log(`client ${socket.id} leaving room ${roomStr} due to exit`);
             socket.to(roomStr).emit('room-update', { status: 'delete', user: nicknames.get(socket.id) });
-
-            if (timers.has(roomId)) {
-                clearInterval(timers.get(roomId));
-                timers.delete(roomId);
-            }
 
             let arr = rooms.get(roomId);
 

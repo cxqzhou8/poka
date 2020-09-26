@@ -5,7 +5,6 @@ class PollResultsList extends React.Component {
     render() {
         let elements = [];
 
-        console.log(this.props.poll);
         for (const key in this.props.poll) {
             elements.push(
                 <PollResultsItem item={key} percent={Math.round(((this.props.poll[key] / this.props.totalVotes) + Number.EPSILON) * 100)} />

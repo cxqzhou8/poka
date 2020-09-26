@@ -65,6 +65,7 @@ class App extends React.Component {
             <Route path="/room/:id/join" render={(props) => (<Room {...props} isJoining={true} />)} />
             <Route path="/room/:id" component={Room} />
             <Route path="/create-room" component={CreateRoom} />
+            <Route path="/:id" render={(props) => (<Start {...props} isJoining={true} />)} />
             <Route path="/" component={Start} />
           </Switch>
         </UserContext.Provider>

@@ -54,7 +54,7 @@ class Start extends React.Component {
                     if (res.status === 200) {
                         this.context.updateProp('profile', res.data.profile);
                         this.context.updateProp('profAlias', res.data.profAlias);
-                        this.setState({ auth: true });
+                        // this.setState({ auth: true });
                     }
                 })
                 .catch(err => {
@@ -76,6 +76,8 @@ class Start extends React.Component {
                 {
                     ({ user, updateProp }) => {
                         if (user.nickname) {
+                            if (this.props.isJoining)
+                                return <Redirect to={`/room/${this.props.match.params.id}/join`} />
                             return <Redirect to='/create-room' />;
                         } else {
                             return (
@@ -93,10 +95,7 @@ class Start extends React.Component {
                                                     Please enter a nickname.
                                                 </Form.Control.Feedback>
                                             </InputGroup>
-
-                                            {/* <Form.Control value={this.state.nickname} onChange={this.handleChange} type="text" placeholder="Enter Nickname" required /> */}
                                         </Form.Group>
-                                        {/* <Button className="text-center" variant="primary" type="submit">Continue</Button> */}
                                     </Form>
                                 </div>
                             );
